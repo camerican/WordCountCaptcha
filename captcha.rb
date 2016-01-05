@@ -39,6 +39,7 @@ def number_of_words_to_exclude( size, desired = nil )
   if( desired.class == Fixnum && size > desired ) # only allow desired size if provided AND it's smaller than total word array size
     desired
   else
-    (1..(size/2)).to_a.sample  if size > 1 # else, let's specify an exclusion array size of at least 1 up to half the total number of words
+    (1..([(size/2),5].min)).to_a.sample  if size > 1 # else, let's specify an exclusion array size of at least 1 up to half the total number of words
+    # up to a max of 5
   end
 end
