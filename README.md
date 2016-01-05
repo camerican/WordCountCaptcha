@@ -1,3 +1,29 @@
+# Word Count Captcha Implementation
+
+Verify the http request originates from a human being (or smart robot) by asking for a unique word count exclusive of a list of words.
+
+## Files
+
+* **app.rb** - Sinatra route fulfillment
+* **captcha.rb** - implementation of Captcha functions
+* views/**get.json.erb** - json response of source_text & exclusion list
+* views/**index.erb** - html response allowing for user input
+* spec/**captcha_spec.rb** - verify captcha.rb functionality
+
+## Routes
+
+* **get '/'** - Render the captcha challenge in html
+* **post '/'** - Handle user response about the captcha
+* **get '/captcha'** - json format of the captcha challenge
+
+## captcha.rb
+
+The Captcha Ruby file implements the core functionality required for this project.  It generates a word exclusion array
+
+
+##### Original Instructions are Below
+---
+
 # Word Count Validator
 
 ## Objective

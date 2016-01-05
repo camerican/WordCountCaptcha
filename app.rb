@@ -3,29 +3,28 @@ require "sinatra/reloader" if development?
 load 'captcha.rb'
 
 get '/' do
+  source_text = load_source_text
+  exclude = generate_exclusion_array(source_text)
 
+  erb :index, locals: { source_text: source_text, exclude: exclude }
 end
 
-# get captcha data from the system, previously get '/'
+# get captcha data from the system in json format, previously get '/'
 get '/captcha' do
-  # load one of the following stock texts (default implementation)
-  files = %w(texts/0 texts/1 texts/2 texts/3 texts/4 texts/5)
+  source_text = load_source_text
+  exclude = generate_exclusion_array(source_text)
 
-  text_file = files.sample
-  source_text = File.read(text_file).strip
-
-  # replace previous implementation with captcha.rb function
-  text_array = generate_word_array(source_text)
-
-  exclude = []
-  for i in (0...number_of_words_to_exclude(text_array.length))
-     exclude << text_array[i]
-  end
-  
   erb :"get.json", locals: { source_text: source_text, exclude: exclude }
 end
 
 # process a user's response
 post '/captcha' do
 
+end
+
+def load_source_text()
+  # load one of the following stock texts (default implementation)
+  files = %w(0 1 2 3 4 5)
+  text_file = "texts/#{files.sample}"
+  File.read(text_file).strip
 end
