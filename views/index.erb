@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Word Count Captcha</title>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700|Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="css/default.css" />
 </head>
 <body>
   <section id="captcha">
+    <h3>Word Count Captcha</h3>
     <p>To verify you're a person, please count the number of <em>unique</em> words in the text below<% if exclude.length > 0 %><%= " <strong>excluding</strong> the following word#{"s" if exclude.length>1}:" %><%
-    exclude.each_with_index do |w,i| %><%= " \"#{w}\"" %><%= "," if exclude.length > 2 && i+2 < exclude.length %><%= ", and" if exclude.length > 1 && i+2 == exclude.length %><% end %><% end %>.</p>
+    exclude.each_with_index do |w,i| %><%= " \"#{w}\"" %><%= "," if exclude.length > 2 && i+2 < exclude.length %><%= " and" if exclude.length > 1 && i+2 == exclude.length %><% end %><% end %>.</p>
     <div class="text"><%= source_text %></div>
     <p>The word count is: <input type="text" name="word_count" /> <input type="submit" value="Submit" /></p>
   </section>
