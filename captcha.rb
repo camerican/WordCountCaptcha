@@ -55,10 +55,6 @@ end
 def verify_word_count( source_text, exclusion_array, guess, identifier = nil )
   word_array = generate_word_array( source_text )
   exclusion_array ||= []
-  puts "word_array: #{word_array}, exclusion_array: #{exclusion_array}"
-  puts "difference: #{word_array - exclusion_array}, length: #{(word_array - exclusion_array).length}"
-  puts "(word_array - exclusion_array).length == guess is #{(word_array - exclusion_array).length == guess}"
-  puts "guess is #{guess}"
   return true if( (word_array - exclusion_array).length == guess.to_i )
   false # return false if the test failed
 end

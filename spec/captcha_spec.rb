@@ -100,14 +100,14 @@ describe 'Within the Captcha system,' do
 
     it "should detect a correct guess when supplied source_text, exclude, and right guess" do
       expect(verify_word_count(text,exclusion_array1,guess1_correct)).to eq(true) 
-      # expect(verify_word_count(text,exclusion_array2,guess2_correct)).to eq(true) 
-      # expect(verify_word_count(text,exclusion_array3,guess3_correct)).to eq(true) 
+      expect(verify_word_count(text,exclusion_array2,guess2_correct)).to eq(true) 
+      expect(verify_word_count(text,exclusion_array3,guess3_correct)).to eq(true) 
     end
 
     it "should detect an incorrect guess when supplied source_text, exclude, and wrong guess" do
       expect(verify_word_count(text,exclusion_array1,guess1_incorrect)).to eq(false) 
-      # expect(verify_word_count(text,exclusion_array2,guess2_incorrect)).to eq(true) 
-      # expect(verify_word_count(text,exclusion_array3,guess3_incorrect)).to eq(true) 
+      expect(verify_word_count(text,exclusion_array2,guess2_incorrect)).to eq(false) 
+      expect(verify_word_count(text,exclusion_array3,guess3_incorrect)).to eq(false) 
     end
   end
 

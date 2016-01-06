@@ -1,6 +1,6 @@
 # Word Count Captcha Implementation
 
-Verifys that an request originates from a human being (or smart robot) by asking for a unique word count exclusive of a list of words.  An http interface is supplied to use the platform, though this was optional.
+Verifies that an http request originates from a human being (or smart robot) by asking for a unique word count exclusive of a list of words.  A visual interface is supplied to implment the captcha, though this was optional.
 
 ## Running the Project
 
@@ -9,9 +9,9 @@ We're using Sinatra without any additional packages beyond what was originally c
 1. bundle install
 2. ruby app.rb 
 
-And then access the project through: http://localhost:4567
+Once the server is running, access the project at: [http://localhost:4567](http://localhost:4567)
 
-Upon supplying your answer and clicking Submit, the page will issue an ajax POST to / and determine whether the user guess was correct.  If yes, a random success message will appear above the Captcha.  If no, a random failure message will appear instead.
+Upon supplying an answer to the word count challenge and clicking Submit, the page will issue an ajax POST to / and determine whether the user guess was correct.  If yes, a random success message will appear above the Captcha.  If no, a random failure message will appear instead.
 
 Tests can be run, as always, by using rspec:
 
