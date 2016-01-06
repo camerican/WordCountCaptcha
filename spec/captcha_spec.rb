@@ -87,4 +87,28 @@ describe 'Within the Captcha system,' do
     end
   end
 
+  context "verify_word_count" do
+    let(:exclusion_array1){ ["here","is"]}
+    let(:guess1_correct){ 13 }
+    let(:guess1_incorrect){ 7 }
+    let(:exclusion_array2){ ["here","is", "i", "myself", "right"]}
+    let(:guess2_correct){ 10 }
+    let(:guess2_incorrect){ 0 }
+    let(:exclusion_array3){ []}
+    let(:guess3_correct){ 15 }
+    let(:guess3_incorrect){ 18 }
+
+    it "should detect a correct guess when supplied source_text, exclude, and right guess" do
+      expect(verify_word_count(text,exclusion_array1,guess1_correct)).to eq(true) 
+      # expect(verify_word_count(text,exclusion_array2,guess2_correct)).to eq(true) 
+      # expect(verify_word_count(text,exclusion_array3,guess3_correct)).to eq(true) 
+    end
+
+    it "should detect an incorrect guess when supplied source_text, exclude, and wrong guess" do
+      expect(verify_word_count(text,exclusion_array1,guess1_incorrect)).to eq(false) 
+      # expect(verify_word_count(text,exclusion_array2,guess2_incorrect)).to eq(true) 
+      # expect(verify_word_count(text,exclusion_array3,guess3_incorrect)).to eq(true) 
+    end
+  end
+
 end 

@@ -43,3 +43,16 @@ def number_of_words_to_exclude( size, desired = nil )
     # up to a max of 5
   end
 end
+
+# Verify Word Count
+# Checks a guess about the word count against the true word count
+# which is: (word_array - exclusion_array).length
+#
+# @param source_text
+# @param exclusion_array all words to not count in source_text
+# @param guess supplied by a user
+# @param identifier will help verify source text is not spoofed (to do)
+def verify_word_count( source_text, exclusion_array, guess, identifier = nil )
+  return true if (generate_word_array( source_text ) - exclusion_array).length == guess 
+  false # return false if the test failed
+end
