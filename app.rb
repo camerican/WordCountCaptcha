@@ -18,9 +18,13 @@ get '/captcha' do
 end
 
 # process a user's response
-post '/captcha' do
+post '/' do
   # need to receive 1) the source_text, 2) exclusion list, 3) user guess, 4) authenticity hash
+  exclude = params[:exclude]
+  exclude ||= []
   result = verify_word_count params[:source_text], params[:exclude], params[:guess]
+  puts "#{result}: #{params[:guess]} guessed"
+  puts "#{params[:exclude]} excluded"
   if result
     status 200
     msg = ["Great job, you got it right!","I always knew you were human, sorry for putting you through that.","Looks good to me.","Thanks!  You got it!", "Great Scot, you did it!","Great Ceasers ghost, you really are human!","Your counting skills are impressive."]
@@ -28,7 +32,7 @@ post '/captcha' do
     status 400
     msg = ["You done goofed!","Nope, that ain't right!","Want to check again?","Can you even count?","That was pretty off.","Epic fail! I knew you were a robot!"]
   end
-  erb :"post.json", locals: { source_text: params[:source_text], exclude: params[:exclude], guess: params[:guess], result: result, msg: msg.sample }
+  erb :"post.json", locals: { source_text: params[:source_text], exclude: exclude, guess: params[:guess], result: result, msg: msg.sample }
 end
 
 def load_source_text()
